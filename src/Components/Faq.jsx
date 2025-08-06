@@ -1,60 +1,64 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Faq = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-                <div className="container">
-                    <a className="navbar-brand fw-bold text-primary" href="#">PrivoBank💎</a>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+          <div className="container">
+            <Link className="navbar-brand fw-bold text-primary" to="/">PrivoBank💎</Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item">
-                                <a className="nav-link active" href="http://localhost:3001/">Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="http://localhost:3001/shits">Services</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="http://localhost:3001/about">about</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="http://localhost:3001/Contact">Contact</a>
-                            </li>
-                            <li>
-                                <a className="nav-link" href="http://localhost:3001/faq">FAQ</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#faq">Testimonials</a>
-                            </li>
-                            <li className="nav-item">
-                                <button className="btn btn-outline-primary ms-3">Login</button>
-                            </li>
-                            <li className="nav-item">
-                                <button className="btn btn-outline-primary ms-3">SignUp</button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/services">Services</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Contact">Contact</Link>
+                </li>
+                <li>
+                  <Link className="nav-link" to="/faq">FAQ</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Testimonials">Testimonials</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/Login" className="btn btn-outline-primary ms-3">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup" className="btn btn-outline-primary ms-3">SignUp</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+
+
             <div className="container my-5">
                 <h2 className="fw-bold text-center mb-4 text-primary">Frequently Asked Questions</h2>
                 <div className="accordion" id="faqAccordion">
                     <div className="accordion-item">
-                        <h2 className="accordion-header" id="faq1">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                        <h2 className="accordion-header" id="faq0">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
                                 How do I open an account with PrivoBank?
                             </button>
                         </h2>
-                        <div id="collapse1" className="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                        <div id="collapse0" className="accordion-collapse collapse" aria-labelledby="faq0" data-bs-parent="#faqAccordion">
                             <div className="accordion-body">You can open an account online through our website or visit any of our branches with a valid ID and proof of address.</div>
                         </div>
                     </div>
@@ -139,12 +143,12 @@ const Faq = () => {
                         </div>
                     </div>
                     <div className="accordion-item">
-                        <h2 className="accordion-header" id="faq10">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                        <h2 className="accordion-header" id="faq00">
+                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse00" aria-expanded="false" aria-controls="collapse00">
                                 What should I do if I suspect fraud on my account?
                             </button>
                         </h2>
-                        <div id="collapse10" className="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#faqAccordion">
+                        <div id="collapse00" className="accordion-collapse collapse" aria-labelledby="faq00" data-bs-parent="#faqAccordion">
                             <div className="accordion-body">Contact us immediately via phone or email. We will assist you in securing your account and investigating the issue.</div>
                         </div>
                     </div>

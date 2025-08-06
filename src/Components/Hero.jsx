@@ -1,5 +1,6 @@
 import React from 'react'
 import laga from '../laga.png';
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -19,7 +20,7 @@ const Hero = () => {
                         <div className=" col-md-6 mb-4 ">
                             <h1 className="display-4 fw-bold">Welcome to PrivoBank</h1>
                             <p className="lead">Your trusted partner in financial services</p>
-                            <button className="btn btn-primary btn-lg">Get Started</button>
+                            <Link to="/signup" className="btn btn-primary btn-lg">Get Started</Link>
                         </div>
                         <div className=" col-md-6 d-flex justify-content-center">
                             <img
@@ -206,8 +207,8 @@ const Hero = () => {
                         <h2 className="fw-bold mb-3">Ready to Experience Secure Banking?</h2>
                         <p className="lead mb-4">Join thousands of satisfied customers who trust PrivoBank for their financial needs. Open your account today and take the first step toward a brighter financial future!</p>
                         <div className="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 mb-3">
-                            <a href="http://localhost:3001/SignUp" className="btn btn-light btn-lg fw-semibold shadow-sm">Open an Account</a>
-                            <a href="tel:+1234567890" className="btn btn-outline-light btn-lg fw-semibold shadow-sm">Call Us: +234 703 8288 356</a>
+                            <Link to="/signup" className="btn btn-light btn-lg fw-semibold shadow-sm">Open an Account</Link>
+                            <a href="tel: +234 708 4689 042" className="btn btn-outline-light btn-lg fw-semibold shadow-sm">Call Us: +234 708 4689 042</a>
                         </div>
                         <div className="mt-4">
                             <div id="ctaCarousel" className="carousel slide carousel-dark" data-bs-ride="carousel">

@@ -1,50 +1,51 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Ourservice = () => {
     return (
         <div>
              <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div className="container">
-        <a className="navbar-brand fw-bold text-primary" href="#">PrivoBank💎</a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link active" href="http://localhost:3001/">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="http://localhost:3001/shits">Services</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="http://localhost:3001/about">about</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
-            </li>
-            <li>
-              <a className="nav-link" href="#faq">FAQ</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#faq">Testimonials</a>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-outline-primary ms-3">Login</button>
-            </li>
-            <li className="nav-item">
-              <button className="btn btn-outline-primary ms-3">SignUp</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+          <div className="container">
+            <Link className="navbar-brand fw-bold text-primary" to="/">PrivoBank💎</Link>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/services">Services</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Contact">Contact</Link>
+                </li>
+                <li>
+                  <Link className="nav-link" to="/faq">FAQ</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Testimonials">Testimonials</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/Login" className="btn btn-outline-primary ms-3">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup" className="btn btn-outline-primary ms-3">SignUp</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
 
 
             <div className=''>
@@ -54,7 +55,7 @@ const Ourservice = () => {
                         {/* Personal Banking */}
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2281e0ff)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2280e0ff)' }}>
                                     <h5 className='card-title'>Personal Banking</h5>
                                     <p className='card-text'>Manage your personal finances with ease.
                                         <ul>
@@ -76,7 +77,7 @@ const Ourservice = () => {
                         {/* Business Solutions */}
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2281e0ff)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2280e0ff)' }}>
                                     <h5 className='card-title'>Business Solutions</h5>
                                     <p className='card-text'>Tailored solutions for your business needs.
                                         <ul>
@@ -98,7 +99,7 @@ const Ourservice = () => {
                         {/* Investment Services */}
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2281e0ff)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f8f9fa, #2280e0ff)' }}>
                                     <h5 className='card-title'>Investment Services</h5>
                                     <p className='card-text'>Grow your wealth with our investment options.
                                         <ul>
@@ -164,7 +165,7 @@ const Ourservice = () => {
                         {/* Student Banking */}
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f7971e, #ffd200)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #f7970e, #ffd200)' }}>
                                     <h5 className='card-title'>Student Banking</h5>
                                     <p className='card-text'>Specialized services for students.
                                         <ul>
@@ -185,7 +186,7 @@ const Ourservice = () => {
                         </div>
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #a1c4fd, #c2e9fb)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #a0c4fd, #c2e9fb)' }}>
                                     <h5 className='card-title'>International Banking</h5>
                                     <p className='card-text'>Banking services for global citizens.
                                         <ul>
@@ -227,7 +228,7 @@ const Ourservice = () => {
                         </div>
                         <div className='col-md-4'>
                             <div className='card mb-4'>
-                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #d4fc79, #96e6a1)' }}>
+                                <div className='card-body' style={{ backgroundImage: 'linear-gradient(to right, #d4fc79, #96e6a0)' }}>
                                     <h5 className='card-title'>Agricultural Finance</h5>
                                     <p className='card-text'>Supporting the agricultural sector.
                                         <ul>
