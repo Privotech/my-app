@@ -12,6 +12,11 @@ import Testimonials from './Components/Testimonial';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Dashboard from './Components/Dashboard';
+import Account from './Components/Account';
+import Setting from './Components/Setting';
+import Transfer from './Components/Transfer';
+import Card from './Components/Card';
+import Transactionreceipt from './Components/Transactionreceipt';
 
 function App() {
   return (
@@ -28,6 +33,11 @@ function App() {
         <Route path='/Login' element={<Login />} />
         <Route path='/Signup' element={<Signup />} />
         <Route path='/Dashboard' element={<Dashboard />} />
+        <Route path='/Account' element={<Account />} />
+        <Route path='/settings' element={<Setting />} />
+        <Route path='/transfers' element={<Transfer />} />
+        <Route path='/cards' element={<Card />} />
+        <Route path='/transactions' element={<Transactionreceipt />} />
       </Routes>
     </div>
   );

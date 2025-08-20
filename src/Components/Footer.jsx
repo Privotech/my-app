@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 
 
@@ -16,13 +17,13 @@ const Footer = () => {
     };
     return (
         <footer className="bg-light text-dark pt-5 pb-3 mt-5 border-top">
-            <div className="container">
+            <div className="container-fluid px-3 px-md-5">
                 <div className="row gy-4 align-items-start">
                     {/* Brand & Description */}
                     <div className="col-12 col-md-4 text-md-start text-center">
                         <h4 className="fw-bold text-primary mb-2">PrivoBank💎</h4>
                         <p className="mb-2">Empowering your financial future with secure, innovative, and accessible banking solutions.</p>
-                        <div className="d-flex gap-3 justify-content-md-start justify-content-center">
+                        <div className="d-flex gap-3 justify-content-md-start justify-content-center flex-wrap">
                             <a href="#" className="text-primary fs-5" aria-label="Facebook"><i className="bi bi-facebook"></i></a>
                             <a href="#" className="text-info fs-5" aria-label="Twitter"><i className="bi bi-twitter"></i></a>
                             <a href="#" className="text-danger fs-5" aria-label="Instagram"><i className="bi bi-instagram"></i></a>

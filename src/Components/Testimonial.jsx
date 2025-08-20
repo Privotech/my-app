@@ -1,3 +1,4 @@
+import '../css/Testimonial.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -29,6 +30,9 @@ const Testimonial = () => {
         { name: 'Wendy Morris', text: 'Customer care was outstanding.' },
         { name: 'Yusuf Ali', text: 'I will recommend this to everyone I know.' },
         { name: 'Zara Lane', text: 'Absolutely loved the personalized attention!' },
+        { name: 'Chinedu Okeke', text: 'The mobile app is so easy to use and secure.' },
+        { name: 'Fatima Bello', text: 'I got my loan approved in minutes. Amazing!' },
+        { name: 'Michael Adeyemi', text: 'Best digital banking experience I have ever had.' },
     ];
 
     return (
@@ -77,38 +81,16 @@ const Testimonial = () => {
             </nav>
 
 
-            <div style={{ padding: '2rem', background: '#f9f9f9' }}>
-                <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>What Our Clients Say</h2>
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(5, 1fr)',
-                    gap: '0.5rem',
-                }}>
+            <div className="testimonial-section">
+                <h2 className="testimonial-title">What Our Clients Say</h2>
+                <div className="testimonial-grid">
                     {testimonials.map((t, idx) => (
-                        <div key={idx} style={{
-                            background: '#fff',
-                            borderRadius: '8px',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-                            padding: '0.5rem',
-                            textAlign: 'center',
-                        }}>
-                            <div style={{
-                                width: 60,
-                                height: 60,
-                                borderRadius: '50%',
-                                background: '#e0e0e0',
-                                margin: '0 auto 0rem',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: 24,
-                                color: '#555',
-                                fontWeight: 'bold',
-                            }}>
+                        <div key={idx} className="testimonial-card animated-card">
+                            <div className="testimonial-avatar">
                                 {t.name[0]}
                             </div>
-                            <p style={{ fontStyle: 'italic', marginBottom: '0rem' }}>&quot;{t.text}&quot;</p>
-                            <h4 style={{ margin: 0, color: '#333' }}>{t.name}</h4>
+                            <p className="testimonial-text">&quot;{t.text}&quot;</p>
+                            <h4 className="testimonial-name">{t.name}</h4>
                         </div>
                     ))}
                 </div>

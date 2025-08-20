@@ -1,0 +1,89 @@
+/* Side navbar toggle button for mobile */
+.side-toggle-btn {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1001;
+  background: #2280e0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  font-size: 24px;
+}
+.only-mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .side-toggle-btn.only-mobile {
+    display: block;
+  }
+  .dashboard-side {
+    left: -240px;
+    position: fixed;
+    z-index: 1000;
+    transition: left 0.3s;
+  }
+  .dashboard-side.open {
+    left: 0;
+  }
+  .dashboard-bg {
+    padding-left: 0 !important;
+  }
+  .dashboard-side:not(.open) {
+    display: none;
+  }
+  .only-mobile {
+    display: block !important;
+  }
+}
+/* Dashboard responsive styles */
+@media (max-width: 1200px) {
+  .dashboard-bg {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .dashboard-side {
+    width: 100%;
+    flex-direction: row;
+    padding: 1rem;
+    box-shadow: none;
+  }
+}
+@media (max-width: 900px) {
+  .dashboard-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dashboard-navbar {
+    padding: 0 1rem;
+    height: auto;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  .dashboard-bg {
+    padding: 0;
+  }
+  .dashboard-side {
+    display: none;
+  }
+  .dashboard-navbar {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+  .dashboard-card {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .dashboard-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+  .dashboard-link {
+    font-size: 1rem;
+  }
+}
