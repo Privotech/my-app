@@ -17,6 +17,8 @@ import Setting from './Components/Setting';
 import Transfer from './Components/Transfer';
 import Card from './Components/Card';
 import Transactionreceipt from './Components/Transactionreceipt';
+import Analysis from './Components/Analysis';
+import Deposit from './Components/Deposit';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
         <Route path='/transfers' element={<Transfer />} />
         <Route path='/cards' element={<Card />} />
         <Route path='/transactions' element={<Transactionreceipt />} />
+        <Route path='/Analysis' element={<Analysis />} />
+        <Route path='/Deposit' element={<Deposit />} />
       </Routes>
     </div>
   );

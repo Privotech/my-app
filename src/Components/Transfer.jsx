@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Transfer = () => {
-  const [sideOpen, setSideOpen] = useState(false);
-  const handleSideToggle = () => setSideOpen((prev) => !prev);
-  const handleCloseSide = () => setSideOpen(false);
+  // Side navbar always visible, no toggle
   const [formData, setFormData] = useState({
     fromAccount: 'PrivoBank •••• 4567',
     toAccountType: 'GlobalTrust Bank',
@@ -65,30 +63,22 @@ const Transfer = () => {
 
   return (
     <div className="dashboard-bg" style={{ display: 'flex', minHeight: '100vh', position: 'relative' }}>
-      {/* Hamburger Toggle */}
-      <button className="side-toggle-btn" style={{ position: 'fixed', top: 20, left: 20, zIndex: 1001, background: '#2280e0', color: '#fff', border: 'none', borderRadius: 8, padding: '0.5rem 0.7rem', fontSize: 24, display: 'none' }} onClick={handleSideToggle} aria-label="Toggle sidebar">
-        &#9776;
-      </button>
-      {/* Side Navbar */}
-      <aside className={`dashboard-side${sideOpen ? ' open' : ''}`} style={{ width: 220, boxShadow: '2px 0 8px rgba(34,128,224,0.07)', display: 'flex', flexDirection: 'column', padding: '2rem 1rem', position: 'fixed', top: 0, left: sideOpen ? 0 : -240, height: '100vh', background: '#fff', zIndex: 1000, transition: 'left 0.3s' }}>
-        <button style={{ background: 'none', border: 'none', fontSize: 28, color: '#2280e0', alignSelf: 'flex-end', marginBottom: 10, display: sideOpen ? 'block' : 'none' }} onClick={handleCloseSide} aria-label="Close sidebar">&times;</button>
+      {/* Side Navbar - always visible, static */}
+      <aside className="dashboard-side" style={{ width: 220, boxShadow: '2px 0 8px rgba(34,128,224,0.07)', display: 'flex', flexDirection: 'column', padding: '2rem 1rem', position: 'static', top: 0, left: 0, height: '100vh', background: '#fff', zIndex: 1000 }}>
         <h2 style={{ color: '#2280e0', fontWeight: 700, marginBottom: '2rem', fontSize: '1.5rem' }}>PrivoBank</h2>
         <nav style={{ flexGrow: 1 }}>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/dashboard" className="dashboard-link" style={{ fontWeight: 600, textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Dashboard</Link></li>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/Account" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Accounts</Link></li>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/transfers" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Transfers</Link></li>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/bills" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Bills</Link></li>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/cards" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Cards</Link></li>
-            <li style={{ marginBottom: '1.5rem' }}><Link to="/support" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Support</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/dashboard" className="dashboard-link" style={{ fontWeight: 600, textDecoration: 'none', fontSize: '1.1rem' }}>Dashboard</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/Account" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }}>Accounts</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/transfers" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }}>Transfers</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/bills" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }}>Bills</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/cards" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }}>Cards</Link></li>
+            <li style={{ marginBottom: '1.5rem' }}><Link to="/support" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }}>Support</Link></li>
           </ul>
         </nav>
-        <Link to="/login" style={{ color: '#888', marginTop: 'auto', textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Logout</Link>
+        <Link to="/login" style={{ color: '#888', marginTop: 'auto', textDecoration: 'none', fontSize: '1rem' }}>Logout</Link>
       </aside>
-      {/* Overlay for mobile */}
-      {sideOpen && <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(34,128,224,0.07)', zIndex: 999 }} onClick={handleCloseSide}></div>}
-
-      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', marginLeft: 220 }}>
+      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', }}>
         {/* Upper Navbar */}
         <nav className="dashboard-navbar" style={{ height: 70, boxShadow: '0 2px 8px rgba(34,128,224,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>

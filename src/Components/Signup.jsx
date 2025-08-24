@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ const Signup = () => {
     return (
         <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ maxWidth: 420, width: '100%', background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', padding: '2.5rem 2rem' }}>
-                <h2 style={{ textAlign: 'center', margin: 0, color: '#2280e0', fontWeight: 700, fontSize: 28 }}>Register</h2>
+                <h2 style={{ textAlign: 'center', margin: 0, color: '#2280e0', fontWeight: 700, fontSize: 28 }}><Link to="/dashboard">←</Link>Register</h2>
                 <form onSubmit={onSubmit}>
                     <div style={{ marginBottom: '1.2rem' }}>
                         <label style={{ fontWeight: 500, marginBottom: 4, display: 'block' }}>Email Address</label>

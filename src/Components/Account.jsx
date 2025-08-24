@@ -49,7 +49,7 @@ const Account = () => {
                         <li style={{ marginBottom: '1.5rem' }}><a href="/dashboard" style={{ color: '#2280e0', fontWeight: 600, textDecoration: 'none', fontSize: '1.1rem' }}>Dashboard</a></li>
                         <li style={{ marginBottom: '1.5rem' }}><a href="/Account" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Accounts</a></li>
                         <li style={{ marginBottom: '1.5rem' }}><a href="/transfers" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Transfers</a></li>
-                        <li style={{ marginBottom: '1.5rem' }}><a href="/bills" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Bills</a></li>
+                        <li style={{ marginBottom: '1.5rem' }}><a href="/Analysis" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Analysis</a></li>
                         <li style={{ marginBottom: '1.5rem' }}><a href="/cards" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Cards</a></li>
                         <li style={{ marginBottom: '1.5rem' }}><a href="/support" style={{ color: '#333', textDecoration: 'none', fontSize: '1.1rem' }}>Support</a></li>
                     </ul>

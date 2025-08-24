@@ -1,10 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Chart from '../chart';
 import { Link } from 'react-router-dom';
 
 const getInitials = (name) => name.split(' ').map(n => n[0]).join('').toUpperCase();
 
-const Transactionreceipt = () => {
+const Analysis = () => {
+    const chartRef = useRef(null);
+    const myChartRef = useRef(null);
     const [profile, setProfile] = useState(() => {
         const saved = localStorage.getItem('profile');
         return saved ? JSON.parse(saved) : { fullName: 'Privilege Oyegbile', avatar: '' };
@@ -17,7 +19,71 @@ const Transactionreceipt = () => {
         window.addEventListener('storage', handleStorage);
         return () => window.removeEventListener('storage', handleStorage);
     }, []);
-    const receipts = JSON.parse(localStorage.getItem('recentTransfers') || '[]');
+
+    useEffect(() => {
+        // Chart logic
+        const transfers = JSON.parse(localStorage.getItem('recentTransfers') || '[]');
+        const spendData = transfers
+            .filter(tx => tx.amount && typeof tx.amount === 'string' && tx.amount.includes('-'))
+            .map(tx => {
+                const num = Number(tx.amount.replace(/[^\d.-]/g, ''));
+                return {
+                    date: tx.date || '',
+                    amount: Math.abs(num)
+                };
+            });
+        const grouped = {};
+        spendData.forEach(({ date, amount }) => {
+            if (!grouped[date]) grouped[date] = 0;
+            grouped[date] += amount;
+        });
+        const labels = Object.keys(grouped);
+        const data = Object.values(grouped);
+
+        if (myChartRef.current) {
+            myChartRef.current.destroy();
+        }
+        if (chartRef.current) {
+            myChartRef.current = new Chart(chartRef.current, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Spending Over Time',
+                            data,
+                            fill: true,
+                            backgroundColor: 'rgba(34,128,224,0.2)',
+                            borderColor: '#2280e0',
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointBackgroundColor: '#2280e0',
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true },
+                        title: {
+                            display: true,
+                            text: 'Spending Analysis',
+                            font: { size: 20 },
+                        },
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Amount (₦)' },
+                        },
+                        x: {
+                            title: { display: true, text: 'Date' },
+                        },
+                    },
+                },
+            });
+        }
+    }, []);
 
     return (
         <div className="dashboard-bg" style={{ display: 'flex', minHeight: '100vh', position: 'relative' }}>
@@ -58,45 +124,17 @@ const Transactionreceipt = () => {
                         <Link to="/settings" style={{ background: '#2280e0', color: '#fff', border: 'none', borderRadius: 8, padding: '0.5rem 1.2rem', fontWeight: 600, fontSize: '1rem', textDecoration: 'none' }}>Settings</Link>
                     </div>
                 </nav>
-                {/* Transaction Receipts Table */}
-                <div style={{ padding: '2rem', background: '#f8fafc', minHeight: '100vh' }}>
-                    <h1 style={{ color: '#2280e0', fontWeight: 700, fontSize: 32, marginBottom: 32 }}>All Transaction Receipts</h1>
-                    {receipts.length === 0 ? (
-                        <div style={{ color: '#888', fontSize: 18 }}>No transaction receipts found.</div>
-                    ) : (
-                        <table style={{ width: '100%', borderCollapse: 'collapse', background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px rgba(34,128,224,0.07)', overflow: 'hidden' }}>
-                            <thead>
-                                <tr style={{ background: '#f5f8fd' }}>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Date</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Description</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Amount</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Status</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Sender</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Receiver Bank</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Receiver Account</th>
-                                    <th style={{ textAlign: 'left', padding: '0.7rem', color: '#2280e0', fontWeight: 600 }}>Note</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {receipts.map((tx, idx) => (
-                                    <tr key={idx}>
-                                        <td style={{ padding: '0.7rem' }}>{tx.date}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.description}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.amount}</td>
-                                        <td style={{ padding: '0.7rem', color: '#27ae60', fontWeight: 600 }}>{tx.status}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.sender || '-'}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.receiverBank || '-'}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.receiverAccount || '-'}</td>
-                                        <td style={{ padding: '0.7rem' }}>{tx.note || '-'}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    )}
+                {/* Analysis Chart Section */}
+                <div className="container my-5">
+                    <h2 className="text-center mb-4 text-primary fw-bold">Spending Analysis</h2>
+                    <div className="card shadow border-0 p-4">
+                        <canvas ref={chartRef} style={{ width: '100%', maxWidth: '100%', height: 300, maxHeight: 1000 }}></canvas>
+                    </div>
+                    <p className="mt-3 text-center">The chart above shows your spending trend. The higher the chart, the more you spent on that day.</p>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Transactionreceipt;
+export default Analysis;

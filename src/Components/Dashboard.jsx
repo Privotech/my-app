@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/dashboard.responsive.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Banknote, BanknoteIcon, Contact } from  'lucide-react'
 import '../css/theme.css';
 
 const getInitials = (name) => name.split(' ').map(n => n[0]).join('').toUpperCase();
@@ -58,11 +59,16 @@ const Dashboard = () => {
                 <h2 style={{ color: '#2280e0', fontWeight: 700, marginBottom: '2rem', fontSize: '1.5rem' }}>PrivoBank</h2>
                 <nav style={{ flexGrow: 1 }}>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        <li style={{ marginBottom: '1.0rem' }}><Link to="/dashboard" className="dashboard-link" style={{ fontWeight: 600, textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Dashboard</Link></li>
+                        <li style={{ marginBottom: '1.0rem' }}><Link to="/dashboard" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Dashboard</Link></li>
                         <li style={{ marginBottom: '1.0rem' }}><Link to="/Account" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Accounts</Link></li>
                         <li style={{ marginBottom: '1.0rem' }}><Link to="/transfers" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Transfers</Link></li>
-                        <li style={{ marginBottom: '1.0rem' }}><Link to="/bills" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Analytics</Link></li>
+                        <li style={{ marginBottom: '1.0rem' }}><Link to="/Analysis" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Analysis</Link></li>
                         <li style={{ marginBottom: '1.0rem' }}><Link to="/cards" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Cards</Link></li>
+                        <li style={{ marginBottom: '1.0rem' }}><Link to="/Deposit
+                        
+                        
+                        
+                        " className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Deposit</Link></li>
                         <li style={{ marginBottom: '1.0rem' }}><Link to="/support" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1rem' }} onClick={handleCloseSide}>Support</Link></li>
                     </ul>
                 </nav>

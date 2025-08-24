@@ -1,6 +1,6 @@
 /* Side navbar toggle button for mobile */
 .side-toggle-btn {
-  display: none;
+  display: block;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -13,7 +13,7 @@
   font-size: 24px;
 }
 .only-mobile {
-  display: none;
+  display: block;
 }
 
 @media (max-width: 900px) {

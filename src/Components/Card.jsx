@@ -113,7 +113,7 @@ const Card = () => {
                         <li style={{ marginBottom: '1.5rem' }}><Link to="/dashboard" className="dashboard-link" style={{ fontWeight: 600, textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Dashboard</Link></li>
                         <li style={{ marginBottom: '1.5rem' }}><Link to="/Account" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Accounts</Link></li>
                         <li style={{ marginBottom: '1.5rem' }}><Link to="/transfers" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Transfers</Link></li>
-                        <li style={{ marginBottom: '1.5rem' }}><Link to="/bills" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Bills</Link></li>
+                        <li style={{ marginBottom: '1.5rem' }}><Link to="/Analysis" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Analysis</Link></li>
                         <li style={{ marginBottom: '1.5rem' }}><Link to="/cards" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Cards</Link></li>
                         <li style={{ marginBottom: '1.5rem' }}><Link to="/support" className="dashboard-link" style={{ textDecoration: 'none', fontSize: '1.1rem' }} onClick={handleCloseSide}>Support</Link></li>
                     </ul>
