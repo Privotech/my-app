@@ -1,79 +1,95 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
+    const [surName, setsurName] = useState('');
+    const [firstName, setFirstname] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [address, setAddress] = useState('');
+    const [gender, setGender] = useState('');
+    const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
-    const { email, password } = formData;
-
-    const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const onSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setMessage('');
         try {
-            const res = await fetch('http://localhost:5000/api/register', {
+            const res = await fetch('http://localhost:3000/api/register', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    password,
+                    surName,
+                    firstName,
+                    phoneNumber,
+                    address,
+                    gender
+                })
             });
             const data = await res.json();
-            if (!res.ok) {
-                throw new Error(data.message || 'Something went wrong');
+            if (res.ok) {
+                setMessage('Signup successful! Redirecting to login...');
+                setTimeout(() => {
+                    navigate('/login');
+                }, 1500);
+            } else {
+                setMessage(data.message || 'Signup failed.');
             }
-            setMessage(data.message);
-            setFormData({ email: '', password: '' });
-        } catch (error) {
-            setMessage(error.message);
+        } catch (err) {
+            console.log(err);
+
+            setMessage('Server error.');
         }
     };
 
     return (
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ maxWidth: 420, width: '100%', background: '#fff', borderRadius: 16, boxShadow: '0 4px 24px rgba(0,0,0,0.10)', padding: '2.5rem 2rem' }}>
-                <h2 style={{ textAlign: 'center', margin: 0, color: '#2280e0', fontWeight: 700, fontSize: 28 }}><Link to="/dashboard">←</Link>Register</h2>
-                <form onSubmit={onSubmit}>
-                    <div style={{ marginBottom: '1.2rem' }}>
-                        <label style={{ fontWeight: 500, marginBottom: 4, display: 'block' }}>Email Address</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={onChange}
-                            required
-                            style={{ borderRadius: 8, border: '1px solid #dbeafe', padding: '0.75rem', fontSize: 16, width: '100%' }}
-                        />
+        <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', background: '#f8fafc' }}>
+            <div className="card shadow p-4" style={{ maxWidth: 420, width: '100%' }}>
+                <h2 className="mb-4 text-center" style={{ color: '#2280e0', fontWeight: 700 }}>Signup Form</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label className="form-label">Surname</label>
+                        <input type="text" className="form-control" value={surName} onChange={(e) => setsurName(e.target.value)} required />
                     </div>
-                    <div style={{ marginBottom: '1.2rem' }}>
-                        <label style={{ fontWeight: 500, marginBottom: 4, display: 'block' }}>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={onChange}
-                            required
-                            minLength="6"
-                            style={{ borderRadius: 8, border: '1px solid #dbeafe', padding: '0.75rem', fontSize: 16, width: '100%' }}
-                        />
+                    <div className="mb-3">
+                        <label className="form-label">Firstname</label>
+                        <input type="text" className="form-control" value={firstName} onChange={(e) => setFirstname(e.target.value)} required />
                     </div>
-                    <button type="submit" style={{ borderRadius: 8, fontWeight: 600, fontSize: 17, padding: '0.75rem 0', background: 'linear-gradient(90deg, #2280e0 0%, #43c6ac 100%)', border: 'none', width: '100%' }}>
-                        Register
-                    </button>
+                    <div className="mb-3">
+                        <label className="form-label">Email</label>
+                        <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Phone number</label>
+                        <input type="tel" className="form-control" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Address</label>
+                        <input type="text" className="form-control" value={address} onChange={(e) => setAddress(e.target.value)} required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Gender</label>
+                        <select className="form-select" value={gender} onChange={(e) => setGender(e.target.value)} required>
+                            <option value="">Select</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    </div>
+                    <button type="submit" className="btn btn-primary w-100" style={{ fontWeight: 600, fontSize: '1.1rem' }}>Sign Up</button>
                 </form>
-                {message && <p style={{ color: message.includes('success') ? 'green' : 'red', marginTop: 16 }}>{message}</p>}
+                {message && <div className="mt-3 text-center" style={{ color: message.includes('success') ? '#27ae60' : '#e74c3c', fontWeight: 600 }}>{message}</div>}
             </div>
         </div>
     );
-};
+}
 
-export default Signup;
-// ...existing code...
+export default Signup

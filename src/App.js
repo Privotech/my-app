@@ -11,14 +11,16 @@ import Faq from './Components/Faq';
 import Testimonials from './Components/Testimonial';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-import Dashboard from './Components/Dashboard';
-import Account from './Components/Account';
-import Setting from './Components/Setting';
-import Transfer from './Components/Transfer';
-import Card from './Components/Card';
-import Transactionreceipt from './Components/Transactionreceipt';
-import Analysis from './Components/Analysis';
-import Deposit from './Components/Deposit';
+
+import Dashboard from './Pages/Dashboard';
+import Account from './Pages/Account';
+import Setting from './Pages/Setting';
+import Transfer from './Pages/Transfer';
+import Card from './Pages/Card';
+import Transactionreceipt from './Pages/Transactionreceipt';
+import Analysis from './Pages/Analysis';
+import Deposit from './Pages/Deposit';
+import Support from './Pages/Support';
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
         <Route path='/faq' element={<Faq />} />
         <Route path='/testimonials' element={<Testimonials />} />
         <Route path='/Login' element={<Login />} />
-        <Route path='/Signup' element={<Signup />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/Dashboard' element={<Dashboard />} />
         <Route path='/Account' element={<Account />} />
         <Route path='/settings' element={<Setting />} />
@@ -42,6 +44,7 @@ function App() {
         <Route path='/transactions' element={<Transactionreceipt />} />
         <Route path='/Analysis' element={<Analysis />} />
         <Route path='/Deposit' element={<Deposit />} />
+        <Route path='/Support' element={<Support />} />
       </Routes>
     </div>
   );
