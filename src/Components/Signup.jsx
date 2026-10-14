@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../api';
 
 const Signup = () => {
     const [surName, setsurName] = useState('');
@@ -17,9 +18,8 @@ const Signup = () => {
         e.preventDefault();
         setMessage('');
         try {
-            const res = await fetch('http://localhost:3000/api/register', {
+            await api('/register', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     email,
                     password,
@@ -30,19 +30,10 @@ const Signup = () => {
                     gender
                 })
             });
-            const data = await res.json();
-            if (res.ok) {
-                setMessage('Signup successful! Redirecting to login...');
-                setTimeout(() => {
-                    navigate('/login');
-                }, 1500);
-            } else {
-                setMessage(data.message || 'Signup failed.');
-            }
+            setMessage('Signup successful! Redirecting to login...');
+            setTimeout(() => navigate('/Login'), 1200);
         } catch (err) {
-            console.log(err);
-
-            setMessage('Server error.');
+            setMessage(err.message || 'Signup failed.');
         }
     };
 

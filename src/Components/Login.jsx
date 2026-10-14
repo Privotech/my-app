@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { api } from '../api';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -19,20 +20,11 @@ const Login = () => {
     e.preventDefault();
     setMessage('');
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Invalid credentials');
-      }
+      const data = await api('/login', { method: 'POST', body: JSON.stringify(formData) });
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('authUser', JSON.stringify(data.user));
       setMessage('Login successful!');
-      // Optionally, redirect to dashboard
-      window.location.href = '/dashboard';
+      window.location.href = '/Dashboard';
     } catch (error) {
       setMessage(error.message);
     }
