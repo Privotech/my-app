@@ -21,6 +21,8 @@ import Transactionreceipt from './Pages/Transactionreceipt';
 import Analysis from './Pages/Analysis';
 import Deposit from './Pages/Deposit';
 import Support from './Pages/Support';
+import Payments from './Pages/Payments';
+import BankLayout from './Components/BankLayout';
 
 function App() {
   return (
@@ -36,15 +38,18 @@ function App() {
         <Route path='/testimonials' element={<Testimonials />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/Dashboard' element={<Dashboard />} />
-        <Route path='/Account' element={<Account />} />
-        <Route path='/settings' element={<Setting />} />
-        <Route path='/transfers' element={<Transfer />} />
-        <Route path='/cards' element={<Card />} />
-        <Route path='/transactions' element={<Transactionreceipt />} />
-        <Route path='/Analysis' element={<Analysis />} />
-        <Route path='/Deposit' element={<Deposit />} />
-        <Route path='/Support' element={<Support />} />
+        <Route element={<BankLayout />}>
+          <Route path='/Dashboard' element={<Dashboard />} />
+          <Route path='/Account' element={<Account />} />
+          <Route path='/settings' element={<Setting />} />
+          <Route path='/transfers' element={<Transfer />} />
+          <Route path='/cards' element={<Card />} />
+          <Route path='/transactions' element={<Transactionreceipt />} />
+          <Route path='/Analysis' element={<Analysis />} />
+          <Route path='/Deposit' element={<Deposit />} />
+          <Route path='/payments' element={<Payments />} />
+          <Route path='/Support' element={<Support />} />
+        </Route>
       </Routes>
     </div>
   );
